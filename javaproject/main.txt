@@ -1,0 +1,288 @@
+package com.computer;
+
+
+
+import java.util.*;
+
+public class main {
+
+public static void main(String[] args)
+
+{
+
+Scanner scan=new Scanner(System.in);
+
+computer b=new computer();
+
+Inventory i=new Inventory();
+
+int op,con,id;
+
+String name,type,u_name,pwd;
+
+User u;
+
+Login l=new Login();
+
+float price;
+
+do
+
+{
+
+System.out.println("Enter Login Details ");
+
+System.out.println("Enter User Name: ");
+
+u_name=scan.next();
+
+System.out.println("Enter Password: ");
+
+pwd=scan.next();
+
+u=new User(u_name,pwd);
+
+boolean lc=l.checkUser(u);
+
+if(lc)
+
+{
+
+do
+
+{
+
+System.out.println("1-Add\n2.Update\n3.Remove\n4.Search\n5.Display");
+
+System.out.println("Enter Option: ");
+
+int option=scan.nextInt();
+
+switch(option)
+
+{
+
+case 1:
+
+/*System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+System.out.println("Enter Name: ");
+
+name=scan.next()+scan.nextLine();
+
+System.out.println("Enter Type: ");
+
+type=scan.next()+scan.nextLine();
+
+System.out.println("Enter Price: ");
+
+price=scan.nextFloat();
+
+i.add(new computer(id,name,type,price));
+
+break;*/
+
+System.out.println("Enter Name: ");
+
+name=scan.next()+scan.nextLine();
+
+System.out.println("Enter type: ");
+
+type=scan.next()+scan.nextLine();
+
+System.out.println("Enter Price: ");
+
+price=scan.nextFloat();
+
+boolean addsts=i.add(new computer(name,type,price));
+
+if(addsts)
+
+System.out.println("Details Added");
+
+else
+
+System.out.println("Couldnot Add");
+
+break;
+
+case 2:
+
+/*System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+b=i.search(id);
+
+System.out.println("1-Change Name\n2-Change Type\n3-Change Price");
+
+System.out.println("Enter Check: ");
+
+int c=scan.nextInt();
+
+switch(c)
+
+{
+
+case 1:
+
+System.out.println("Enter Name: ");
+
+name=scan.next()+scan.nextLine();
+
+b.setName(name);
+
+break;
+
+case 2:
+
+System.out.println("Enter Type: ");
+
+type=scan.next()+scan.nextLine();
+
+b.settype(type);
+
+break;
+
+case 3:
+
+System.out.println("Enter Price: ");
+
+price=scan.nextFloat();
+
+b.setPrice(price);
+
+break;
+
+}*/
+
+System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+b.setId(id);
+
+System.out.println("1-Change Name\n2-Change Type\n3-Change Price");
+
+System.out.println("Enter Check: ");
+
+int c=scan.nextInt();
+
+switch(c)
+
+{
+
+case 1:
+
+System.out.println("Enter Name: ");
+
+name=scan.next()+scan.nextLine();
+
+break;
+
+case 2:
+
+System.out.println("Enter Type: ");
+
+type=scan.next()+scan.nextLine();
+
+break;
+
+case 3:
+
+System.out.println("Enter Price: ");
+
+price=scan.nextFloat();
+
+break;
+
+}
+
+boolean updsts=i.update(b,c);
+
+if(updsts)
+
+System.out.println("Details Updated");
+
+else
+
+System.out.println("Could not Updated");
+
+break;
+
+case 3:
+
+/*System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+i.remove(id);
+
+break;*/
+
+System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+b.setId(id);
+
+boolean dltsts=i.remove(b);
+
+if(dltsts)
+
+System.out.println("Deleted Sucessfully");
+
+else
+
+System.out.println("Could not Successfully");
+
+break;
+
+case 4:
+
+System.out.println("Enter ID: ");
+
+id=scan.nextInt();
+
+b=i.search(id);
+
+System.out.println(b);
+
+break;
+
+case 5:
+
+i.show();
+
+break;
+
+}
+
+System.out.println("Enter Op: ");
+
+op=scan.nextInt();
+
+}while(op!=-1);
+
+}
+
+else
+
+{
+
+i.show();
+
+}
+
+System.out.println("Enter 1 to Logout and continue using Type Login or Enter -1 to Exit");
+
+con=scan.nextInt();
+
+}while(con!=-1);
+
+}
+
+}
+

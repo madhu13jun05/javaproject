@@ -1,0 +1,112 @@
+package com.computer;
+
+
+
+public class computer {
+
+	private int id;
+
+	private String name,type;
+
+	private float price;
+
+	public computer()
+
+	{
+
+	}
+
+	public computer(int id, String name, String type, float price) {
+
+	super();
+
+	this.id = id;
+
+	this.name = name;
+
+	this.type = type;
+
+	this.price = price;
+
+	}
+
+	public computer( String name, String type, float price) {
+
+	this.name = name;
+
+
+
+	this.type = type;
+
+
+
+	this.price = price;
+
+	}
+
+	public int getId() {
+
+	return id;
+
+	}
+
+	public void setId(int id) {
+
+	this.id = id;
+
+	}
+
+	public String getName() {
+
+	return name;
+
+	}
+
+	public void setName(String name) {
+
+	this.name = name;
+
+	}
+
+	public String gettype() {
+
+	return type;
+
+	}
+
+	public void settype(String type) {
+
+	this.type = type;
+
+	}
+
+	public float getPrice() {
+
+	return price;
+
+	}
+
+	public void setPrice(float price) {
+
+
+
+	this.price = price;
+
+	}
+
+
+
+	@Override
+
+
+
+	public String toString() {
+
+	return "computer [id=" + id + ", name=" + name + ", type=" + type + ", price=" + price + "]";
+
+	}
+
+	}
+
+
+

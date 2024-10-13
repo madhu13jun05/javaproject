@@ -1,0 +1,143 @@
+package com.computer;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inventory{
+	Connection con;
+	DBUtil db=new DBUtil();
+	Statement stmt;
+	ResultSet rs;
+	String qry;
+	List <computer> l=new ArrayList<>();
+
+	/* public void add(computer b)
+	{
+	l.add(b);
+	}*/
+	public boolean add(computer b)
+	{
+	boolean sts=false;
+	int count =0;
+	try
+	{
+	con=db.getDBConnection();
+	stmt=con.createStatement();
+	qry="insert into computer(name,type,price) values ('"+b.getName()+"','"+b.gettype()+"',"+b.getPrice()+")";
+	count=stmt.executeUpdate(qry);
+	if (count==1)
+	sts=true;
+	else
+	throw new Exception();
+	}
+	catch (Exception e)
+	{
+	System.out.println(e);
+	}
+	return sts;
+	}
+	/* public void update()
+
+	{
+
+	System.out.println("Updated Sucessfully");
+
+	}*/
+	public boolean update(computer b,int c)
+	{
+	boolean sts=false;
+	int count=0;
+	try
+	{
+	con=db.getDBConnection();
+	stmt=con.createStatement();
+	switch(c)
+	{
+	case 1:
+	qry="update computerdetails set name='"+b.getName()+"'wher id="+b.getId();
+	break;
+	case 2:
+	qry="update computerdetails set type='"+b.gettype()+"'wher id="+b.getId();
+	break;
+	case 3:
+	qry="update computerdetails set Price='"+b.getPrice()+"'wher id="+b.getId();
+	break;
+	}
+	count=stmt.executeUpdate(qry);
+	if (count==1)
+	sts=true;
+	else
+	throw new Exception();
+	}
+	catch (Exception e)
+	{
+	System.out.println(e);
+	}
+	return sts;
+	}
+	/*public void remove(int id)
+	{
+	for(int i=0;i<l.size();i++)
+	{
+	if (id==(l.get(i).getId()))
+	l.remove(i);
+	}
+	}*/
+	public boolean remove(computer b)
+	{
+	boolean sts=false;
+	   int count=0;
+	try {
+	con=db.getDBConnection();
+	stmt=con.createStatement();
+	qry="Delete from computer where id="+b.getId();
+	count=stmt.executeUpdate(qry);
+	if(count==1)
+	sts=true;
+	}catch (Exception e) {
+	System.out.println(e);
+	}
+	return sts;
+	}
+
+	public computer search(int id)
+	{
+	for(int i=0;i<l.size();i++)
+	{
+	if(id==(l.get(i).getId()))
+	return (l.get(i));
+	}
+	return null;
+	}
+	public void show()
+	{
+	/*for(computer b:l)
+
+	{
+
+	System.out.println(b);
+
+	}*/
+
+	try
+
+	{
+	con=db.getDBConnection();
+
+	stmt=con.createStatement();
+
+	rs=stmt.executeQuery("select * from computer");
+
+	while(rs.next())
+
+	System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getFloat(4));
+	}
+	catch (Exception e)
+	{
+	System.out.println(e);
+	}
+ }
+}
